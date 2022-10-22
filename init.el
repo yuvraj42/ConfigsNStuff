@@ -43,6 +43,10 @@
 ;; dont make backup files
 (setq make-backup-files nil)
 
+;; show count in isearch
+(setq isearch-lazy-count t)
+(setq isearch-lazy-highlight t)
+
 ;; start as fullscreen
 (toggle-frame-fullscreen)
 
@@ -60,6 +64,9 @@
 ;; Move custom variables to a different file
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
+
+;; set C-/ to undo-only instead of undo which is a headache sometimes
+(global-set-key (kbd "C-/") #'undo-only)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Packages related setup
@@ -86,6 +93,7 @@
     haskell-mode
     elpy
     highlight-indent-guides
+    csv-mode
     ))
 
 ;; check if any new package needs to be installed
@@ -121,6 +129,7 @@
   (advice-add 'python-mode :before 'elpy-enable)
   :config
   (setq elpy-rpc-python-command "python3")
+  (setenv "WORKON_HOME" "/Users/yraghuvanshi/miniconda3/envs")
   ;; Enable flycheck and disable flymake with elpy
   (when (require 'flycheck nil t)
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
@@ -130,9 +139,47 @@
 
 ;; Enable highlight indent guides mode with prog mode
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+;; Enable company-mode with prog mode
+(add-hook 'prog-mode-hook 'company-mode)
 
 ;; hig method set to character
 (setq highlight-indent-guides-method 'character)
+
+
+;; throwaway
+(defun rologs-show-img-csvs()
+  (interactive)
+  (let* ((fname (buffer-file-name))
+         (basename (substring fname 0 (- (length "_Predictions.png"))))
+         (csvname (file-name-nondirectory (concat basename ".csv"))))
+    (if (eq major-mode 'image-mode)
+        (progn
+          (delete-other-windows)
+          (split-window-right)
+          (other-window 1)
+          (find-file (concat "../gt_csvs/" csvname))
+          (split-window-below)
+          (other-window 1)
+          (find-file (concat "../ro_csvs_modified/" csvname))
+
+          (other-window 1))
+      (message "Image mode not enabled"))))
+
+(defun associations-show-imgs()
+  (interactive)
+  (let* ((fname (buffer-file-name))
+         (basename (file-name-nondirectory fname)))
+    (if (eq major-mode 'image-mode)
+        (progn
+          (split-window)
+          (other-window 1)
+          (find-file (concat "../../predictions/Prediction_1/Vis/" basename))
+          (other-window 1)
+          (goto-char 0)
+          (goto-char (let ((x (search-forward (substring basename 0 (- 4)) nil t nil)))
+                       (if (null x) 0 x)))
+          (recenter-top-bottom 0))
+      (message "Image mode not enabled"))))
 
 (provide 'init)
 ;;; init.el ends here
