@@ -28,6 +28,9 @@
 ;; paren mode
 (show-paren-mode t)
 
+;; pair brackets and stuff
+(electric-pair-mode t)
+
 ;; Highlight current line.
 (global-hl-line-mode t)
 
