@@ -15,7 +15,7 @@
 (setq inhibit-startup-message t)
 
 ;; line numbers
-(global-linum-mode t)
+(global-display-line-numbers-mode t)
 
 ;; use spaces instead of tabs
 (setq-default indent-tabs-mode nil)
@@ -56,14 +56,8 @@
 ;; turn off the goddamn bell
 (setq ring-bell-function 'ignore)
 
-(load-theme 'spacemacs-dark t)
-
 ;; always open read-only buffers in view-mode
 (setq-default view-read-only t)
-
-;; Move custom variables to a different file
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
 
 ;; set C-/ to undo-only instead of undo which is a headache sometimes
 (global-set-key (kbd "C-/") #'undo-only)
@@ -145,41 +139,20 @@
 ;; hig method set to character
 (setq highlight-indent-guides-method 'character)
 
-
-;; throwaway
-(defun rologs-show-img-csvs()
-  (interactive)
-  (let* ((fname (buffer-file-name))
-         (basename (substring fname 0 (- (length "_Predictions.png"))))
-         (csvname (file-name-nondirectory (concat basename ".csv"))))
-    (if (eq major-mode 'image-mode)
-        (progn
-          (delete-other-windows)
-          (split-window-right)
-          (other-window 1)
-          (find-file (concat "../gt_csvs/" csvname))
-          (split-window-below)
-          (other-window 1)
-          (find-file (concat "../ro_csvs_modified/" csvname))
-
-          (other-window 1))
-      (message "Image mode not enabled"))))
-
-(defun associations-show-imgs()
-  (interactive)
-  (let* ((fname (buffer-file-name))
-         (basename (file-name-nondirectory fname)))
-    (if (eq major-mode 'image-mode)
-        (progn
-          (split-window)
-          (other-window 1)
-          (find-file (concat "../../predictions/Prediction_1/Vis/" basename))
-          (other-window 1)
-          (goto-char 0)
-          (goto-char (let ((x (search-forward (substring basename 0 (- 4)) nil t nil)))
-                       (if (null x) 0 x)))
-          (recenter-top-bottom 0))
-      (message "Image mode not enabled"))))
+;; load spacemacs
+(load-theme 'spacemacs-dark t)
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
