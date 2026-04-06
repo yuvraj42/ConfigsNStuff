@@ -1,0 +1,11 @@
+# start maximized and remove title bar
+maximize = true
+gtk-titlebar-hide-when-maximized = true
+
+background-opacity = 0.9
+background-blur = 1
+
+# fonts and stuff
+#font-family = "JetBrainsMono Nerd Font"
+#font-size = 12
+#font-style = "Medium"
