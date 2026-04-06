@@ -157,7 +157,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+e exec exec konsole -e sh -c 'read -p "exit i3? [y/N] " confirm && [ "$confirm" = "y" ] && i3-msg exit'
+bindsym $mod+Shift+e exec exec ghostty -e sh -c 'read -p "exit i3? [y/N] " confirm && [ "$confirm" = "y" ] && i3-msg exit'
 
 # lock screen using betterlockscreen
 bindsym $mod+shift+x exec betterlockscreen -l
