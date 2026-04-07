@@ -1,15 +1,15 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](color_red)\
+[](#5C1F55)\
 $os\
 $username\
-[](bg:color_yellow fg:color_red)\
+[](bg:#8C3050 fg:#5C1F55)\
 $directory\
-[](fg:color_yellow bg:color_green)\
+[](fg:#8C3050 bg:#A85A35)\
 $git_branch\
 $git_status\
-[](fg:color_green bg:color_blue)\
+[](fg:#A85A35 bg:#3A6E8C)\
 $python\
 $c\
 $cpp\
@@ -24,58 +24,37 @@ $nodejs\
 $nim\
 $rust\
 $scala\
-[](fg:color_blue bg:color_white)\
+[](fg:#3A6E8C bg:#04595C)\
 $docker_context\
-[](fg:color_white bg:color_magenta)\
+[](fg:#04595C bg:#1A3A52)\
 $time\
-[](fg:color_magenta)
+[](fg:#1A3A52)
 $character
 """
 
 # Disable the blank line at the start of the prompt
 add_newline = false
 
-palette = "srcery"
-
-[palettes.srcery]
-color_black = "#1c1b19"
-color_red = "#ef2f27"
-color_orange = "#ff5f00"
-color_green = "#519f50"
-color_yellow = "#fbb829"
-color_blue = "#2c78bf"
-color_magenta = "#e02c6d"
-color_cyan = "#0aaeb3"
-color_teal = "#008080"
-color_white = "#baa67f"
-color_brightblack = "#918175"
-color_brightred = "#f75341"
-color_brightorange = "#ff8700"
-color_brightgreen = "#98bc37"
-color_brightyellow = "#fed06e"
-color_brightblue = "#68a8e4"
-color_brightmagenta = "#ff5c8f"
-color_brightcyan = "#2be4d0"
-color_brightwhite = "#fce8c3"
-color_gray = "#262626"
-
 # You can also replace your username with a neat symbol like   or disable this
 # and use the os module below
 [username]
 show_always = true
-style_user = "bg:color_red"
-style_root = "bg:color_red"
+style_user = "bg:#5C1F55 fg:#F0BBFF"
+style_root = "bg:#5C1F55 fg:#F0BBFF"
 format = '[$user ]($style)'
 disabled = false
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
 [os]
-style = "bg:color_red"
-disabled = true # Disabled by default
+style = "bg:#5C1F55 fg:#F0BBFF"
+disabled = false # Disabled by default
+
+[os.symbols]
+Macos = " "
 
 [directory]
-style = "bg:color_yellow"
+style = "bg:#8C3050 fg:#FFB3C8"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = ""
@@ -95,89 +74,93 @@ truncation_symbol = ""
 
 [python]
 symbol = ""
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = "[ $symbol $virtualenv ]($style)"
 
 [c]
 symbol = " "
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [cpp]
 symbol = " "
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
 symbol = " "
-style = "bg:color_white"
+style = "bg:#04595C fg:#A8F0EE"
 format = '[ $symbol $context ]($style)'
 
 [elixir]
 symbol = " "
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [elm]
 symbol = " "
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:color_green"
+style = "bg:#A85A35 fg:#FFD9B3"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:color_green"
+style = "bg:#A85A35 fg:#FFD9B3"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
 symbol = " "
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [gradle]
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
 symbol = " "
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = "󰆥 "
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
 symbol = " "
-style = "bg:color_blue"
+style = "bg:#3A6E8C fg:#C5E8FF"
 format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:color_magenta"
+style = "bg:#1A3A52 fg:#B3D4F5"
 format = '[ ⌛ $time ]($style)'
+
+[character]
+success_symbol = "[❯](bold white)"
+error_symbol = "[✗](bold red)"
