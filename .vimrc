@@ -81,7 +81,7 @@ set wildignore+=*/node_modules/*,*/.git/*,*.pyc,*/__pycache__/*
 " Usability
 set backspace=indent,eol,start
 set mouse=a
-set clipboard=unnamedplus
+set clipboard=unnamed
 set undofile
 set undodir=~/.vim/undodir//  " trailing // encodes full file path in undo filename,
                               " so two files named foo.py in different dirs don't collide
